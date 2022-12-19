@@ -53,4 +53,4 @@ jobs:
         with:
           app-name: 'Api-seminario'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_681A01555012429588C89DD5A3D033C1 }}
-          package: .
+          package: .index.js
