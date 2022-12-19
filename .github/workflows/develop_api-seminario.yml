@@ -24,8 +24,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --prod
- 
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -51,5 +51,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'Api-seminario'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_642D7B210D1A42A6B23E4E4DC2E386EC }}
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DB2F9F0605694ADB904D474A97E3C1CF }}
           package: .
