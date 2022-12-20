@@ -19,14 +19,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '18.x'
 
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --prod
-          working-directory: .
- 
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -52,5 +51,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'Api-seminario'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_681A01555012429588C89DD5A3D033C1 }}
-          package: .index.js
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_89FF67C1758C4806B9B9E3E07DB0CC46 }}
+          package: .
