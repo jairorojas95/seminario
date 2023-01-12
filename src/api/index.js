@@ -2,8 +2,8 @@
 const express = require('express');
 const genericRoutes = express.Router();
 
-const test = require('./test');
+const senales = require('./senales');
 
-genericRoutes.use('/test', test);
+genericRoutes.use('/senales', senales);
 
 module.exports = genericRoutes;
